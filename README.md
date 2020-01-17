@@ -1,16 +1,16 @@
-# blogging_app
-
-A new Flutter project.
+A new Blogging Flutter project.
 
 ## Getting Started
 
 This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+we have used different material design, to build this project also for sroring the data we have used firestore database and srorage.
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+>It is the simple blogging app for posting posts, where we have used images, text and description of the post
+>Different page view are there.
+>Mini google style postr system.
+>Large view posting system with different other option.
+>Gallery are also there in one of the pages.
+>We have used firestore from where we are grabbing our data.
+>We have used refresh view functionality.
+>Circular avter with different colors are there.
