@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:blogging_app/Pages/ItemOne.dart';
 import 'package:blogging_app/Pages/ItemTwo.dart';
 import 'package:blogging_app/Pages/ItemThree.dart';
@@ -37,15 +36,94 @@ class _HomeState extends State<Home>
         backgroundColor: Colors.deepOrange,
       ),
 
+      //Drawer
+      drawer: Drawer
+      (
+        child: ListView
+        (
+          children: <Widget>
+          [
+            UserAccountsDrawerHeader
+            (
+              accountEmail: null,
+              accountName: Text('Blogging App',
+              style: TextStyle
+              (
+                fontSize: 20.0
+              ),
+              ),
+
+              decoration: BoxDecoration
+              (
+                color: Colors.deepOrange,
+              ),
+            ),
+
+            ListTile
+            (
+              onTap: ()
+              {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(builder: (c)=>ItemOne()));
+              },
+              title: Text('First',
+              style: TextStyle
+              (
+                fontSize: 17.0,
+                color: Colors.black,
+              ),
+              ),
+              leading: Icon(Icons.list, color: Colors.black,),
+            ),
+
+            ListTile
+            (
+              onTap: ()
+              {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(builder: (c)=>Home()));
+              },
+              title: Text('Home',
+               style: TextStyle
+              (
+                fontSize: 17.0,
+                color: Colors.black,
+              ),
+              ),
+              leading: Icon(Icons.home, color: Colors.black,),
+            ),
+
+            ListTile
+            (
+              onTap: ()
+              {
+                Navigator.of(context).pop();
+                Navigator.of(context).push(new MaterialPageRoute(builder: (c)=>ItemThree()));
+              },
+              title: Text('Third',
+               style: TextStyle
+              (
+                fontSize: 17.0,
+                color: Colors.black,
+              ),
+              ),
+              leading: Icon(Icons.photo_size_select_actual, color: Colors.black,),
+            ),
+
+          ],
+        ),
+      ),
+
 
       body: pageOptions[_indexpage],
 
       bottomNavigationBar: CurvedNavigationBar
       (
-
+        height: 55.0,
         color: Colors.deepOrange,
         buttonBackgroundColor: Colors.black,
-        backgroundColor: Colors.transparent,
+        //backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         animationCurve: Curves.easeInOut,
         animationDuration: Duration(milliseconds: 400),
         index: 1,
@@ -69,5 +147,8 @@ class _HomeState extends State<Home>
 
       
     );
+
+    
+
   }
 }
