@@ -78,6 +78,7 @@ class _ItemThreeState extends State<ItemThree>
           }
           else
           {
+            // third item pic grid section 
             return RefreshIndicator
             (
               onRefresh: getRefresh,
