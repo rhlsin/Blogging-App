@@ -44,6 +44,113 @@ class _ItemOneState extends State<ItemOne>
   @override
   Widget build(BuildContext context) 
   {
+
+    // custom Dialog
+    customDialog(BuildContext context, String img, String title, String des)
+    {
+      return showDialog
+      (
+        context: context,
+        builder: (BuildContext context)
+        {
+          return Dialog
+          (
+            shape: RoundedRectangleBorder
+            (
+              borderRadius: BorderRadius.circular(20.0)
+            ),
+            child: Container
+            (
+              height: MediaQuery.of(context).size.height/1.3,
+              width: MediaQuery.of(context).size.width,
+
+              decoration: BoxDecoration
+              (
+                borderRadius: BorderRadius.circular(20.0),
+                gradient: LinearGradient
+                (
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  colors: 
+                  [
+                    //Colors.pinkAccent,
+                    Colors.blueAccent,
+                    Colors.purpleAccent,
+                  ]
+                )
+              ),
+
+              //Adding image in the dialog
+              child: SingleChildScrollView
+              (
+                child: Column
+                (
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>
+                  [
+                    Container
+                    (
+                      height: 150.0,
+                      child: ClipRRect
+                      (
+                        borderRadius : BorderRadius.circular(20.0),
+                        child: Image.network
+                        (
+                          img,
+                          height: 150.0,
+                          width: MediaQuery.of(context).size.width,
+                          fit: BoxFit.cover,
+                        ),
+                        
+                      ),
+                    ),
+
+                    SizedBox(height: 6.0,),
+
+                    
+                    // dialog title
+                    Container
+                    (
+                      padding: EdgeInsets.all(10.0),
+                      child: Text
+                      (
+                        title.toUpperCase(),
+                        style: TextStyle
+                        (
+                          fontSize: 20.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ),
+
+                    SizedBox(height: 6.0,),
+
+                    // dialog description
+                    Container
+                    (
+                      padding: EdgeInsets.all(10.0),
+                      child: Text
+                      (
+                        des,
+                        style: TextStyle
+                        (
+                          fontSize: 18.0,
+                          color: Colors.white,
+                        ),
+                      ),
+                    )
+
+                  ],
+                ),
+              ),
+
+            ),
+          );
+        }
+      );
+    }
+    //
+
     return Scaffold
     (
       body: FutureBuilder
@@ -79,6 +186,7 @@ class _ItemOneState extends State<ItemOne>
                        margin: EdgeInsets.all(5.0),
                        child: Card
                        (
+                         
                          shape: RoundedRectangleBorder
                          (
                            borderRadius: BorderRadius.circular(20.0)
@@ -94,12 +202,12 @@ class _ItemOneState extends State<ItemOne>
                                flex: 1,
                                child: ClipRRect
                                (
-
+                                 
                                  borderRadius: BorderRadius.circular(20.0),
                                  child: Image.network(ourData.data['img'],
-                                 height: 180.0,
+                                 height: 150.0,
                                  fit: BoxFit.cover,
-
+                                
                                  ),
                                ),
                              ),
@@ -149,25 +257,39 @@ class _ItemOneState extends State<ItemOne>
                                    Align
                                    (
                                     alignment: Alignment.bottomRight,
-                                    child: Container
+                                    child: InkWell
                                     (
-                                      height: 30.0,
-                                      margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
-                                      padding: EdgeInsets.all(5.0),
-                                      decoration: BoxDecoration
-                                      (
-                                        color: color,
-                                        borderRadius: BorderRadius.circular(15.0),
-                                      ),
-                                      // Text of button
-                                      child: Text('More',
-                                      style: TextStyle
-                                      (
-                                        fontSize: 14.0,
-                                        color: Colors.white,
-                                        fontWeight: FontWeight.bold
-                                      ),
-                                      ),
+                                      onTap: ()
+                                      {
+                                        customDialog
+                                        (
+                                          context,
+                                          ourData.data['img'],
+                                          ourData.data['title'],
+                                          ourData.data['des'],
+                                        );
+                                      },
+                                      
+                                      child: Container
+                                        (
+                                          height: 30.0,
+                                          margin: EdgeInsets.fromLTRB(0, 10, 10, 0),
+                                          padding: EdgeInsets.all(5.0),
+                                          decoration: BoxDecoration
+                                          (
+                                            color: color,
+                                            borderRadius: BorderRadius.circular(15.0),
+                                          ),
+                                          // Text of button
+                                          child: Text('More',
+                                          style: TextStyle
+                                          (
+                                            fontSize: 14.0,
+                                            color: Colors.white,
+                                            fontWeight: FontWeight.bold
+                                          ),
+                                          ),
+                                        ),
                                     ),
                                    ),
 
@@ -186,6 +308,8 @@ class _ItemOneState extends State<ItemOne>
         }
       )
     );
+
+    
     
   }
 }
