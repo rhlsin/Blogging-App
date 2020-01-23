@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:async';
 
 class ItemTwo extends StatefulWidget {
@@ -29,12 +28,12 @@ class _ItemTwoState extends State<ItemTwo>
   // material color
   List <MaterialColor>_colorItem = 
   [
+    Colors.red,
     Colors.yellow,
-    Colors.deepOrange,
     Colors.indigo,
+    Colors.deepOrange,
     Colors.blue,
     Colors.green,
-    Colors.red,
     Colors.pink,
     Colors.cyan,
     Colors.deepPurple,
@@ -48,7 +47,7 @@ class _ItemTwoState extends State<ItemTwo>
   {
     return new Scaffold
     (
-      backgroundColor: Colors.grey,
+      backgroundColor: Colors.transparent,
       body: FutureBuilder
       (
         future: getHomePost(),
@@ -128,7 +127,7 @@ class _ItemTwoState extends State<ItemTwo>
                                             child: Text(ourData.data['title'],
                                             style: TextStyle 
                                             (
-                                              fontSize: 20.0,
+                                              fontSize: 18.0,
                                               color: Colors.black,
                                               fontWeight: FontWeight.bold
 
